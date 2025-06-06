@@ -8,9 +8,10 @@ const userSchema = mongoose.Schema(
     balance: { type: Number, default: 1000000 },
     portfolio: [
       {
-        symbol: { type: String, required: true }, // e.g., "GTCO"
-        quantity: { type: Number, required: true }, // how many shares
-        buyPrice: { type: Number, required: true }, // price per share at purchase
+        symbol: { type: String, required: true }, 
+        quantity: { type: Number, required: true }, 
+        type: {type: String, enum:["buy","sell"], required:true},
+        price:{type: Number, required: true },
         date: { type: Date, default: Date.now },
       },
     ],
