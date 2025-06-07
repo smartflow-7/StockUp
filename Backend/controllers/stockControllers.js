@@ -1,10 +1,30 @@
 import finnhub from "finnhub";
 import userModel from "../models/userModel.js";
 import connectfinnhub from "../utils/stockApi.js";
+import axios from "axios";
 
 const api_key = finnhub.ApiClient.instance.authentications["api_key"];
 api_key.apiKey = process.env.FINHUB_API_KEY;
 const finnhubClient = new finnhub.DefaultApi();
+
+// LIST ALL STOCKS
+const getStocks = async (req, res) => {
+  try {
+    const response = await axios.get("https://finnhub.io/api/v1/stock/symbol", {params:{
+        exchange:"US",
+        token:process.env.FINHUB_API_KEY
+    }})
+
+    const filterStock = response.data.filter(stock => stock.currency === "USD")
+
+    res.json({success:true, stocks: filterStock})
+  } 
+  catch (error)
+   {
+    console.log(error);
+    res.json({success:false, message:"Network connection", error:error.message})
+   }
+};
 
 // KOREDE THIS IS FOR SEARCHING STOCKS
 const searchStock = async (req, res) => {
@@ -53,7 +73,6 @@ const buyStock = async (req, res) => {
 
     await user.save();
     res.json({ success: true, message: "Stock purchased", user });
-
   } catch (error) {
     console.error(error);
     res.son({
@@ -65,54 +84,58 @@ const buyStock = async (req, res) => {
 };
 
 // TO SELL STOCKS
-const sellstocks = async (req,res) => {
-    try {
-        const {symbol,quantity}= req.body
-        const {userId} = req.body
-        const user = await userModel.findById(userId)
-        const stockData = await connectfinnhub(symbol)
-        const currentPrice = stockData.c
+const sellstocks = async (req, res) => {
+  try {
+    const { symbol, quantity } = req.body;
+    const { userId } = req.body;
+    const user = await userModel.findById(userId);
+    const stockData = await connectfinnhub(symbol);
+    const currentPrice = stockData.c;
 
-        const stockedOwned = user.portfolio.find((stock) => stock.symbol === symbol && stock.type === "buy")
+    const stockedOwned = user.portfolio.find(
+      (stock) => stock.symbol === symbol && stock.type === "buy"
+    );
 
-        if (!stockedOwned || stockedOwned.quantity < quantity ) {
-            return res.json({success:false, message:"Insfficient Balance"})
-        }
-
-        stockedOwned.quantity -= quantity
-        if (stockedOwned.quantity === 0) {
-            user.portfolio = user.portfolio.filter((s) => s !== stockedOwned)
-         }
-
-         user.balance += quantity * currentPrice
-         user.portfolio.push({
-            symbol,
-            quantity,
-            buyPrice: stockedOwned.buyPrice,
-            type: "sell",
-            price: currentPrice
-         })
-
-         await user.save()
-         res.json({success:true, message:"Stock sold successfully", user})
-
-    } catch (error) {
-        console.log(error);
-        res.json({success:false, message:"Unable to sell stock try again"})
-        
+    if (!stockedOwned || stockedOwned.quantity < quantity) {
+      return res.json({ success: false, message: "Insfficient Balance" });
     }
-}
+
+    stockedOwned.quantity -= quantity;
+    if (stockedOwned.quantity === 0) {
+      user.portfolio = user.portfolio.filter((s) => s !== stockedOwned);
+    }
+
+    user.balance += quantity * currentPrice;
+    user.portfolio.push({
+      symbol,
+      quantity,
+      buyPrice: stockedOwned.buyPrice,
+      type: "sell",
+      price: currentPrice,
+    });
+
+    await user.save();
+    res.json({ success: true, message: "Stock sold successfully", user });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Unable to sell stock try again" });
+  }
+};
 
 // TO GET USER PORTFOLIO
-const getPortfolio = async (req,res) => {
-    try {
-        const {userId} = req.body
-        const user = await userModel.findById(userId)
-        res.json({success:true, Portfolio:user.portfolio, balance:user.balance})
-    } catch (error) {
-        console.log(error);
-        res.json({success:false, message:"Failed to fetch try again"})
-    }
-}
+const getPortfolio = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    const user = await userModel.findById(userId);
+    res.json({
+      success: true,
+      Portfolio: user.portfolio,
+      balance: user.balance,
+    });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: "Failed to fetch try again" });
+  }
+};
 
-export { searchStock, buyStock, sellstocks, getPortfolio};
+export { searchStock, buyStock, sellstocks, getPortfolio, getStocks };
