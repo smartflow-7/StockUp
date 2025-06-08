@@ -4,7 +4,7 @@ import express from "express"
 
 const newsRouter = express.Router()
 
-newsRouter.get("/news",getNews)
+newsRouter.get("/",getNews)
 
 
 export default newsRouter;
