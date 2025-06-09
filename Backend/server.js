@@ -6,6 +6,7 @@ import connectDB from './config/mongodb.js'; // Your MongoDB connection function
 import userRoute from './routes/userRoutes.js'; // User auth routes (if any)
 import stockRouter from './routes/stockRoutes.js'; // Stock search routes
 import newsRouter from './routes/newsRoutes.js';
+import boardRoutes from './routes/leaderboardRoutes.js';
 
 // App initialization
 const app = express();
@@ -22,6 +23,7 @@ app.use(cors());
 app.use("/stockUp/user", userRoute);   
 app.use("/stockUp/stocks", stockRouter); 
 app.use("/stockUp/news", newsRouter)
+app.use("/stockUp/leaderboard",boardRoutes)
 
 
 app.get('/', (req, res) => {

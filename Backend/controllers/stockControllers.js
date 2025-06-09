@@ -2,28 +2,34 @@ import finnhub from "finnhub";
 import userModel from "../models/userModel.js";
 import connectfinnhub from "../utils/stockApi.js";
 import axios from "axios";
+import calculateTotalBalance from "../utils/leaderBoard.js";
 
 const api_key = finnhub.ApiClient.instance.authentications["api_key"];
 api_key.apiKey = process.env.FINHUB_API_KEY;
 const finnhubClient = new finnhub.DefaultApi();
-
 // LIST ALL STOCKS
 const getStocks = async (req, res) => {
   try {
-    const response = await axios.get("https://finnhub.io/api/v1/stock/symbol", {params:{
-        exchange:"US",
-        token:process.env.FINHUB_API_KEY
-    }})
+    const response = await axios.get("https://finnhub.io/api/v1/stock/symbol", {
+      params: {
+        exchange: "US",
+        token: process.env.FINHUB_API_KEY,
+      },
+    });
 
-    const filterStock = response.data.filter(stock => stock.currency === "USD")
+    const filterStock = response.data.filter(
+      (stock) => stock.currency === "USD"
+    );
 
-    res.json({success:true, stocks: filterStock})
-  } 
-  catch (error)
-   {
+    res.json({ success: true, stocks: filterStock });
+  } catch (error) {
     console.log(error);
-    res.json({success:false, message:"Network connection", error:error.message})
-   }
+    res.json({
+      success: false,
+      message: "Network connection",
+      error: error.message,
+    });
+  }
 };
 
 // KOREDE THIS IS FOR SEARCHING STOCKS
@@ -71,11 +77,12 @@ const buyStock = async (req, res) => {
       price: currentPrice,
     });
 
+    user.totalBalance = await calculateTotalBalance(user);
     await user.save();
     res.json({ success: true, message: "Stock purchased", user });
   } catch (error) {
     console.error(error);
-    res.son({
+    res.json({
       success: false,
       message: "Failed to buy stock",
       error: error.message,
@@ -114,6 +121,7 @@ const sellstocks = async (req, res) => {
       price: currentPrice,
     });
 
+    user.totalBalance = await calculateTotalBalance(user);
     await user.save();
     res.json({ success: true, message: "Stock sold successfully", user });
   } catch (error) {
@@ -138,4 +146,10 @@ const getPortfolio = async (req, res) => {
   }
 };
 
-export { searchStock, buyStock, sellstocks, getPortfolio, getStocks };
+export {
+  searchStock,
+  buyStock,
+  sellstocks,
+  getPortfolio,
+  getStocks,
+};

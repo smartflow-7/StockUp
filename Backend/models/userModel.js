@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     balance: { type: Number, default: 1000000 },
+    totalBalance:{type:Number, default:1000000},
     portfolio: [
       {
         symbol: { type: String, required: true }, 
