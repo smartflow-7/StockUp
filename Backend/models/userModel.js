@@ -6,13 +6,18 @@ const userSchema = mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     balance: { type: Number, default: 1000000 },
-    totalBalance:{type:Number, default:1000000},
+    totalBalance: { type: Number, default: 1000000 },
+    initialDeposit: {
+      type: Number,
+      required: true,
+      default: 1000000,
+    },
     portfolio: [
       {
-        symbol: { type: String, required: true }, 
-        quantity: { type: Number, required: true }, 
-        type: {type: String, enum:["buy","sell"], required:true},
-        price:{type: Number, required: true },
+        symbol: { type: String, required: true },
+        quantity: { type: Number, required: true },
+        type: { type: String, enum: ["buy", "sell"], required: true },
+        price: { type: Number, required: true },
         date: { type: Date, default: Date.now },
       },
     ],

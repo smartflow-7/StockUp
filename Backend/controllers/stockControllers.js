@@ -135,11 +135,19 @@ const getPortfolio = async (req, res) => {
   try {
     const { userId } = req.body;
     const user = await userModel.findById(userId);
+
+    const { totalBalance, initialDeposit } = user;
+
+    let percentage = 0;
+    if (initialDeposit > 0) {
+      percentage = ((totalBalance - initialDeposit) / initialDeposit) * 100;
+    }
     res.json({
       success: true,
       Portfolio: user.portfolio,
       balance: user.balance,
-      TotalBalance: user.totalBalance
+      TotalBalance: user.totalBalance,
+      percentage: percentage.toFixed(2)
     });
   } catch (error) {
     console.log(error);
