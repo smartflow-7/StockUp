@@ -139,6 +139,7 @@ const getPortfolio = async (req, res) => {
       success: true,
       Portfolio: user.portfolio,
       balance: user.balance,
+      TotalBalance: user.totalBalance
     });
   } catch (error) {
     console.log(error);
