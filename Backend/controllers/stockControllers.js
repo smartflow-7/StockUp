@@ -3,6 +3,7 @@ import userModel from "../models/userModel.js";
 import connectfinnhub from "../utils/stockApi.js";
 import axios from "axios";
 import calculateTotalBalance from "../utils/leaderBoard.js";
+import cron from "node-cron";
 
 const api_key = finnhub.ApiClient.instance.authentications["api_key"];
 api_key.apiKey = process.env.FINHUB_API_KEY;
@@ -154,6 +155,32 @@ const getPortfolio = async (req, res) => {
     res.json({ success: false, message: "Failed to fetch try again" });
   }
 };
+
+cron.schedule("*/10 * * * *", async () => {
+  console.log();
+  try {
+    const users = await userModel.find({});
+
+    
+    for (const user of users) {
+      const totalBalance = await calculateTotalBalance(user);
+      user.totalBalance = totalBalance;
+
+      if (user.initialDeposit > 0) {
+        user.percentageChange = ((totalBalance - user.initialDeposit) / user.initialDeposit) * 100;
+      } else {
+        user.percentageChange = 0;
+      }
+
+      await user.save();
+    }
+    console.log("User balances updated.");
+
+  } catch (error) {
+    console.log(error.message,"Error in fetching ");
+    
+  }
+})
 
 export {
   searchStock,
