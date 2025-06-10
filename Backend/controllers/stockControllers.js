@@ -11,28 +11,22 @@ const finnhubClient = new finnhub.DefaultApi();
 // LIST ALL STOCKS
 const getStocks = async (req, res) => {
   try {
-    const response = await axios.get("https://finnhub.io/api/v1/stock/symbol", {
-      params: {
-        exchange: "US",
-        token: process.env.FINHUB_API_KEY,
-      },
-    });
-
-    const filterStock = response.data.filter(
-      (stock) => stock.currency === "USD"
+    const response = await axios.get(
+      "https://financialmodelingprep.com/api/v3/stock/list",
+      { params: { apikey: process.env.FMP_API_KEY } }
     );
 
+    const filterStock = response.data.filter(stock => stock.exchange === "NASDAQ");
     res.json({ success: true, stocks: filterStock });
   } catch (error) {
-    console.log(error);
-    res.json({
+    console.error("FMP stocks error:", error.message);
+    res.status(500).json({
       success: false,
-      message: "Network connection",
-      error: error.message,
+      message: "Failed to fetch stocks",
+      error: error.message
     });
   }
 };
-
 // KOREDE THIS IS FOR SEARCHING STOCKS
 const searchStock = async (req, res) => {
   const { query } = req.query;
