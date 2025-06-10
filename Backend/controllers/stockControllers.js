@@ -100,36 +100,77 @@ const sellstocks = async (req, res) => {
     const stockData = await connectfinnhub(symbol);
     const currentPrice = stockData.c;
 
-    const stockedOwned = user.portfolio.find(
+    const stockedOwned = user.portfolio.filter(
       (stock) => stock.symbol === symbol && stock.type === "buy"
     );
+    const totalOwnedQty = stockedOwned.reduce(
+      (sum, stock) => sum + stock.quantity,
+      0
+    );
 
-    if (!stockedOwned || stockedOwned.quantity < quantity) {
-      return res.json({ success: false, message: "Insfficient Balance" });
+      if (totalOwnedQty < quantity) {
+      return res.json({
+        success: false,
+        message: "Insufficient Balance",
+      });
     }
 
-    stockedOwned.quantity -= quantity;
-    if (stockedOwned.quantity === 0) {
-      user.portfolio = user.portfolio.filter((s) => s !== stockedOwned);
+    let qtyToSell = quantity;
+    for (let stock of stockedOwned) {
+      if (qtyToSell === 0) break;
+
+      const deductQty = Math.min(stock.quantity, qtyToSell);
+      stock.quantity -= deductQty;
+      qtyToSell -= deductQty;
     }
 
-    user.balance += quantity * currentPrice;
-    user.portfolio.push({
+      user.portfolio = user.portfolio.filter(
+      (stock) => !(stock.symbol === symbol && stock.type === "buy" && stock.quantity === 0)
+    );
+
+     user.portfolio.push({
       symbol,
       quantity,
-      buyPrice: stockedOwned.buyPrice,
+      buyPrice: stockedOwned[0].buyPrice,
       type: "sell",
       price: currentPrice,
     });
 
+     user.balance += quantity * currentPrice;
     user.totalBalance = await calculateTotalBalance(user);
     await user.save();
-    res.json({ success: true, message: "Stock sold successfully", user });
+
+      res.json({ success: true, message: "Stock sold successfully", user });
+
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Unable to sell stock try again" });
   }
 };
+
+const aggregatePortfolio = (portfolio) => {
+  const grouped = {};
+
+  portfolio.forEach(({ symbol, quantity, buyPrice, type, price }) => {
+    const key = `${symbol}_${type}`;
+
+    if (!grouped[key]) {
+      grouped[key] = {
+        symbol,
+        quantity: 0,
+        buyPrice,
+        type,
+        price,
+      };
+    }
+
+    grouped[key].quantity += quantity;
+    grouped[key].price = price;
+  });
+
+  return Object.values(grouped);
+};
+
 
 // TO GET USER PORTFOLIO
 const getPortfolio = async (req, res) => {
@@ -137,24 +178,28 @@ const getPortfolio = async (req, res) => {
     const { userId } = req.body;
     const user = await userModel.findById(userId);
 
+    const aggregatedPortfolio = aggregatePortfolio(user.portfolio);
+
     const { totalBalance, initialDeposit } = user;
 
     let percentage = 0;
     if (initialDeposit > 0) {
       percentage = ((totalBalance - initialDeposit) / initialDeposit) * 100;
     }
+
     res.json({
       success: true,
-      Portfolio: user.portfolio,
+      Portfolio: aggregatedPortfolio,
       balance: user.balance,
       TotalBalance: user.totalBalance,
-      percentage: percentage.toFixed(2)
+      percentage: percentage.toFixed(2),
     });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Failed to fetch try again" });
   }
 };
+
 
 cron.schedule("*/10 * * * *", async () => {
   console.log();
