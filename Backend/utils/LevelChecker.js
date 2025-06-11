@@ -9,16 +9,16 @@ const levelProgress = async (user) => {
   let badge = user.badge;
 
   if (trades >= 25 && profit >= 50000) {
-    newLevel = 4;
+    newLevel = 5;
     badge = "Expert Trader";
-  } else if (trades >= 15 && profit >= 20000) {
-    newLevel = 3;
+  } else if (trades >= 15 && profit >= 1000) {
+    newLevel = 4;
     badge = "Advanced Trader";
-  } else if (trades >= 10 && profit >= 10000) {
-    newLevel = 2;
+  } else if (trades >= 10 && profit >= 500) {
+    newLevel = 3;
     badge = "Intermediate Trader";
-  } else if (trades >= 5 && profit >= 5000) {
-    newLevel = 1;
+  } else if (trades >= 5 && profit >= 250) {
+    newLevel = 2;
     badge = "Beginner Trader";
   }
 
