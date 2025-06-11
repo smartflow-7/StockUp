@@ -12,6 +12,10 @@ const userSchema = mongoose.Schema(
       required: true,
       default: 1000000,
     },
+    profit:{type: Number, default:0},
+    level: { type: Number, default: 1 },
+    countTrades:{type: Number, default: 0}, 
+    badge:{type: String, default:"Beginner Trader"},
     portfolio: [
       {
         symbol: { type: String, required: true },

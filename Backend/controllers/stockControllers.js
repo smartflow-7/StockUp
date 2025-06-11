@@ -4,7 +4,7 @@ import connectfinnhub from "../utils/stockApi.js";
 import axios from "axios";
 import calculateTotalBalance from "../utils/leaderBoard.js";
 import cron from "node-cron";
-
+import levelProgress from "../utils/LevelChecker.js";
 const api_key = finnhub.ApiClient.instance.authentications["api_key"];
 api_key.apiKey = process.env.FINHUB_API_KEY;
 const finnhubClient = new finnhub.DefaultApi();
@@ -16,14 +16,16 @@ const getStocks = async (req, res) => {
       { params: { apikey: process.env.FMP_API_KEY } }
     );
 
-    const filterStock = response.data.filter(stock => stock.exchange === "NASDAQ");
+    const filterStock = response.data.filter(
+      (stock) => stock.exchange === "NASDAQ"
+    );
     res.json({ success: true, stocks: filterStock });
   } catch (error) {
     console.error("FMP stocks error:", error.message);
     res.status(500).json({
       success: false,
       message: "Failed to fetch stocks",
-      error: error.message
+      error: error.message,
     });
   }
 };
@@ -73,7 +75,10 @@ const buyStock = async (req, res) => {
     });
 
     user.totalBalance = await calculateTotalBalance(user);
-    await user.save();
+    user.countTrades += 1;
+    user.profit = user.totalBalance - user.initialDeposit;
+    await levelProgress(user);
+
     res.json({ success: true, message: "Stock purchased", user });
   } catch (error) {
     console.error(error);
@@ -102,7 +107,7 @@ const sellstocks = async (req, res) => {
       0
     );
 
-      if (totalOwnedQty < quantity) {
+    if (totalOwnedQty < quantity) {
       return res.json({
         success: false,
         message: "Insufficient Balance",
@@ -118,11 +123,16 @@ const sellstocks = async (req, res) => {
       qtyToSell -= deductQty;
     }
 
-      user.portfolio = user.portfolio.filter(
-      (stock) => !(stock.symbol === symbol && stock.type === "buy" && stock.quantity === 0)
+    user.portfolio = user.portfolio.filter(
+      (stock) =>
+        !(
+          stock.symbol === symbol &&
+          stock.type === "buy" &&
+          stock.quantity === 0
+        )
     );
 
-     user.portfolio.push({
+    user.portfolio.push({
       symbol,
       quantity,
       buyPrice: stockedOwned[0].buyPrice,
@@ -130,12 +140,13 @@ const sellstocks = async (req, res) => {
       price: currentPrice,
     });
 
-     user.balance += quantity * currentPrice;
+    user.balance += quantity * currentPrice;
     user.totalBalance = await calculateTotalBalance(user);
-    await user.save();
+    user.countTrades += 1;
+    user.profit = user.totalBalance - user.initialDeposit;
+    await levelProgress(user);
 
-      res.json({ success: true, message: "Stock sold successfully", user });
-
+    res.json({ success: true, message: "Stock sold successfully", user });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Unable to sell stock try again" });
@@ -165,7 +176,6 @@ const aggregatePortfolio = (portfolio) => {
   return Object.values(grouped);
 };
 
-
 // TO GET USER PORTFOLIO
 const getPortfolio = async (req, res) => {
   try {
@@ -194,19 +204,18 @@ const getPortfolio = async (req, res) => {
   }
 };
 
-
 cron.schedule("*/10 * * * *", async () => {
   console.log();
   try {
     const users = await userModel.find({});
 
-    
     for (const user of users) {
       const totalBalance = await calculateTotalBalance(user);
       user.totalBalance = totalBalance;
 
       if (user.initialDeposit > 0) {
-        user.percentageChange = ((totalBalance - user.initialDeposit) / user.initialDeposit) * 100;
+        user.percentageChange =
+          ((totalBalance - user.initialDeposit) / user.initialDeposit) * 100;
       } else {
         user.percentageChange = 0;
       }
@@ -214,17 +223,9 @@ cron.schedule("*/10 * * * *", async () => {
       await user.save();
     }
     console.log("User balances updated.");
-
   } catch (error) {
-    console.log(error.message,"Error in fetching ");
-    
+    console.log(error.message, "Error in fetching ");
   }
-})
+});
 
-export {
-  searchStock,
-  buyStock,
-  sellstocks,
-  getPortfolio,
-  getStocks,
-};
+export { searchStock, buyStock, sellstocks, getPortfolio, getStocks };

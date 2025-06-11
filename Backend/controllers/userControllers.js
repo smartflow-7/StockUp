@@ -18,8 +18,14 @@ const signIn = async (req, res) => {
     const ismatch = await bcrypt.compare(password, user.password);
     if (ismatch) {
       const token = createToken(user._id);
-      const { name, email, balance, portfolio} = user;
-      res.json({ success: true, token, user: { name, email, balance,portfolio } });
+const { name, email, balance, portfolio, level, badge, profit } = user;
+
+res.json({
+  success: true,
+  token,
+  user: { name, email, balance, level, badge, profit, portfolio }
+});
+
     } else {
       res.json({ success: false, message: "Invalid password" });
     }
