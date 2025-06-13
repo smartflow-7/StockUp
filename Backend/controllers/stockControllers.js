@@ -5,51 +5,34 @@ import axios from "axios";
 import calculateTotalBalance from "../utils/leaderBoard.js";
 import cron from "node-cron";
 import levelProgress from "../utils/LevelChecker.js";
+import generateSuggestion from "../utils/aiSuggestions.js";
 const api_key = finnhub.ApiClient.instance.authentications["api_key"];
 api_key.apiKey = process.env.FINHUB_API_KEY;
 const finnhubClient = new finnhub.DefaultApi();
 
-
-
 //  Suggestion Controller
-export const getSuggestion = async (req, res) => {
+const getSuggestion = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const user = await userModel.findById(userId);
+    const { userId, symbol } = req.body;
 
-    if (!user) {
-      return res.json({ success: false, message: "User not found" });
+    const result = await generateSuggestion(userId, symbol);
+
+    if (!result.success) {
+      return res.json({ success: false, message: result.message });
     }
 
-    const latestTrade = user.portfolio[user.portfolio.length - 1];
-    if (!latestTrade) {
-      return res.json({ success: true, suggestion: "Start trading to get insights!" });
-    }
+    const { suggestion, userSummary } = result;
 
-    const stockInfo = await connectfinnhub(latestTrade.symbol);
-
-    let message = "";
-
-    if (stockInfo.dp > 3) {
-      message = `🔥 The stock ${latestTrade.symbol} is up ${stockInfo.dp.toFixed(2)}%. You might consider holding or buying more.`;
-    } else if (stockInfo.dp < -3) {
-      message = `📉 ${latestTrade.symbol} is dropping (${stockInfo.dp.toFixed(2)}%). Consider if it's time to sell or wait for a rebound.`;
-    } else {
-      message = `🤔 ${latestTrade.symbol} is relatively stable. You could explore other sectors for more volatility.`;
-    }
-
-    res.json({ success: true, suggestion: message, userSummary: {
-      trades: user.countTrades,
-      balance: user.balance,
-      badge: user.badge
-    }});
-  } catch (err) {
-    console.error("AI Suggestion Error:", err.message);
+    res.json({
+      success: true,
+      suggestion,
+      userSummary,
+    });
+  } catch (error) {
+    console.error("AI Suggestion Error:", error.message);
     res.json({ success: false, message: "Internal Server Error" });
   }
 };
-
-
 
 // LIST ALL STOCKS
 const getStocks = async (req, res) => {
@@ -265,10 +248,10 @@ cron.schedule("*/10 * * * *", async () => {
 
       await user.save();
     }
-    console.log("User balances updated.");
+    // console.log("User balances updated.");
   } catch (error) {
     console.log(error.message, "Error in fetching ");
   }
 });
 
-export { searchStock, buyStock, sellstocks, getPortfolio, getStocks };
+export { searchStock, buyStock, sellstocks, getPortfolio, getStocks,getSuggestion };

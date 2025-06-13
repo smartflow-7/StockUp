@@ -4,6 +4,6 @@ import { getSuggestion } from "../controllers/stockControllers.js";
 const suggestionRoutes = express.Router();
 
 
-suggestionRoutes.get("/suggestion/:userId", getSuggestion);
+suggestionRoutes.post("/suggestion", getSuggestion);
 
 export default suggestionRoutes;

@@ -2,7 +2,6 @@
 import userModel from "../models/userModel.js";
 import connectfinnhub from "../utils/stockApi.js";
 
-// Mock archetypes
 const archetypes = [
   "Crypto Cowboy",
   "Cautious Analyst",
@@ -14,8 +13,7 @@ const archetypes = [
 const generateArchetype = (user) => {
   const { countTrades, profit, portfolio } = user;
   const totalBuys = portfolio.filter((p) => p.type === "buy").length;
-  const techFocus = portfolio.filter((p) => p.symbol.includes("TECH"))
-    .length;
+  const techFocus = portfolio.filter((p) => p.symbol.includes("TECH")).length;
 
   if (profit > 2000 && countTrades > 10) return "High-Roller";
   if (techFocus > 3) return "Sector Sniper";
@@ -23,12 +21,12 @@ const generateArchetype = (user) => {
   return archetypes[Math.floor(Math.random() * archetypes.length)];
 };
 
-const generateSuggestion = async (userId) => {
+const generateSuggestion = async (userId, overrideSymbol = null) => {
   const user = await userModel.findById(userId);
   if (!user) return { success: false, message: "User not found" };
 
   const archetype = generateArchetype(user);
-  const recentStock = user.portfolio[user.portfolio.length - 1]?.symbol || "AAPL";
+  const recentStock = overrideSymbol || user.portfolio[user.portfolio.length - 1]?.symbol || "AAPL";
   const marketData = await connectfinnhub(recentStock);
 
   let suggestion;
@@ -44,7 +42,7 @@ const generateSuggestion = async (userId) => {
       suggestion = `Crypto is wild but rewarding! Fancy a dive into simulated coin stocks today?`;
       break;
     case "Sector Sniper":
-      suggestion = `Tech-focused, huh? Consider exploring other sectors like finance or energy for balance.`;
+      suggestion = `Tech focused, huh? Consider exploring other sectors like finance or energy for balance.`;
       break;
     default:
       suggestion = `Diversify to strengthen your portfolio. ${recentStock} looks stable for now.`;
@@ -55,6 +53,11 @@ const generateSuggestion = async (userId) => {
     archetype,
     suggestion,
     marketData,
+    userSummary: {
+      trades: user.countTrades,
+      balance: user.balance,
+      badge: user.badge
+    }
   };
 };
 
