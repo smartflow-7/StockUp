@@ -18,12 +18,12 @@ const signIn = async (req, res) => {
     const ismatch = await bcrypt.compare(password, user.password);
     if (ismatch) {
       const token = createToken(user._id);
-const { name, email, balance, portfolio, level, badge, profit } = user;
+const { name, email, _id, balance, portfolio, level, badge, profit } = user;
 
 res.json({
   success: true,
   token,
-  user: { name, email, balance, level, badge, profit, portfolio }
+  user: { name, email, balance, id:_id, level, badge, profit, portfolio }
 });
 
     } else {
@@ -66,9 +66,9 @@ const signUp = async (req, res) => {
     const user = await newUser.save();
     const token = createToken(user._id);
 
-    const { balance, portfolio } = user;
+    const { balance, portfolio,_id } = user;
 
-    res.json({ success: true, token, user: { name, email, balance, portfolio } });
+    res.json({ success: true, token, user: { name, email, balance, portfolio, id:_id } });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: "Something Went wrong" });
