@@ -1,5 +1,5 @@
 import express from "express";
-import { getLeaderboard } from "../controllers/leaderboardControllers.js"; // ✅ named import
+import { getLeaderboard } from "../controllers/leaderboardControllers.js"; 
 
 const boardRoutes = express.Router();
 

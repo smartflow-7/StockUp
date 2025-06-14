@@ -38,12 +38,6 @@ const generateSuggestion = async (userId, overrideSymbol = null) => {
     case "Cautious Analyst":
       suggestion = `You've been playing safe. ${recentStock} might be a solid conservative choice right now.`;
       break;
-    case "Crypto Cowboy":
-      suggestion = `Crypto is wild but rewarding! Fancy a dive into simulated coin stocks today?`;
-      break;
-    case "Sector Sniper":
-      suggestion = `Tech focused, huh? Consider exploring other sectors like finance or energy for balance.`;
-      break;
     default:
       suggestion = `Diversify to strengthen your portfolio. ${recentStock} looks stable for now.`;
   }

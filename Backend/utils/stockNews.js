@@ -14,7 +14,6 @@ const connectNews = (category = "general") => {
           console.log("Finnhub error:", error);
           reject(error);
         } else {
-          // console.log("Fetched news: ", data);
           resolve(data);
         }
       });

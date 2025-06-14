@@ -248,7 +248,6 @@ cron.schedule("*/10 * * * *", async () => {
 
       await user.save();
     }
-    // console.log("User balances updated.");
   } catch (error) {
     console.log(error.message, "Error in fetching ");
   }
