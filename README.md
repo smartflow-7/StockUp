@@ -27,22 +27,29 @@ Through these simulation and  AI-driven suggestions, aswell as educational conte
 # Technologies
 **Tech Stack & Tools Used**
 
-- **Frontend** :  `Dart` with `Flutter` – for building responsive mobile-first UI  
-- **Backend**   :  `Node.js` –, trading logic, news feed, leaderboard   
+- **Frontend** :  `Dart` programming language with `Flutter` frameworks for building the responsive mobile app's UI  
+- **Backend**   :  `Node.js` runtime environment that allows javascript programming languguge for the developmrnt of the trading logic, news feed, leaderboard and other functionalities  
 - **Database**   : `MongoDB Atlas` A NoSQL database system used for storing and managing user data, portfolio states, quiz results            
 - **API Testing**: `Postman` was used for testing endpoints and API's functionality during backend development                        
 - **Deployment** : `Render`  used here to deploy the backend service  and enable it go live                                       
-- **Code Editor** : `VS Code is the main IDE used for writing and debugging both the backend and frontend of the app's code   
+- **Code Editor** : `VS Code` is the main IDE used for writing and debugging both the backend and frontend of the app's code   
 - **Mobile simuation** : `Android Studio` was used for simulating the stockUp app during it's development                     
 - **Collaboration** : `GitHub` was used as the medium for team member contributions and project tracking.                                    
-- **Design**    : `Figma` was used to design the UI/UXy prototypes, the app's workflow UI/UX wireframes,                                 |\
-- A**uthentication**:  RESTful API
-
-
-
+- **Design**    : `Figma` was used to design the UI/UXy prototypes, the app's workflow UI/UX wireframes,                                 
+- **Authentication**:  ` RESTful API` used for authentications
+- **API References**:
+   - NASDAQ API – Nigerian stock news
+    
+   - Yahoo Finance API For Global stock market news
+    
+    -Finhub.io Real For time market & financial data
+    
+    -Financial Modeling Prep For Stock charts & financial graphs
 
 
 # Setup
+
+
 # Contributions
 
 #Acknowledgments
