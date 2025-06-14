@@ -35,7 +35,8 @@ Through these simulation and  AI-driven suggestions, aswell as educational conte
 - **Code Editor** : `VS Code` is the main IDE used for writing and debugging both the backend and frontend of the app's code   
 - **Mobile simuation** : `Android Studio` was used for simulating the stockUp app during it's development                     
 - **Collaboration** : `GitHub` was used as the medium for team member contributions and project tracking.                                    
-- **Design**    : `Figma` was used to design the UI/UXy prototypes, the app's workflow UI/UX wireframes,                                 
+- **UI/UXDesign**    : The UI/UX was prototyped using `Figma` with a strong focus on accessibility, gamification elements, and clarity for beginner-level users.
+, the app's workflow UI/UX wireframes,                                 
 - **Authentication**:  ` RESTful API` used for authentications
 - **API References**:
    - NASDAQ API – Nigerian stock news
@@ -48,6 +49,17 @@ Through these simulation and  AI-driven suggestions, aswell as educational conte
 
 
 # 🖥️Setup and Installation
+
+cd backend
+npm install
+npm run start
+Frontend (Flutter)
+
+cd frontend
+flutter pub get
+flutter run
+⚠️ Ensure you have Flutter SDK and Node.js installed. MongoDB connection details must be configured in the .env file.
+
 
 ## 🎮 Features
 
@@ -64,9 +76,29 @@ Through these simulation and  AI-driven suggestions, aswell as educational conte
 ✅ **Real-Time Trading Data**
 
 
+
+# Appwork Flow
+
+Design elements include:
+
+-Minimalist dark/light themes
+
+-Progress bars for learning
+
+-Intuitive tab-based navigation
+
+-Game-like XP badges and progress meters
+
+
+
+
+
+
+
+
 ## 🧠Usage
 
-1. **Sign Up & Onboard**: Users complete onboarding and set trading goals.
+1. **Sign Up & Onboard**: Users complete onboarding and set theur trading goals.
 2. **Explore & Learn**: Access educational content to build trading literacy.
 3. **Simulate Trades**: Use virtual currency to simulate real-time trading.
 4. **Earn & Rank**: Get ranked based on profitability, learning milestones, and activity.
@@ -79,78 +111,14 @@ Through these simulation and  AI-driven suggestions, aswell as educational conte
 # Contributions
 
 #Acknowledgments
+**Nigerian Stock Exchange** For the Hackathon and initiative on financial literacy.
 
-# License
-
-
-
-
-## 🖥️ Setup & Installation
-
-### Backend (Node.js + MongoDB)
-
-```bash
-cd backend
-npm install
-npm run start
-Frontend (Flutter)
-bash
-Copy
-Edit
-cd frontend
-flutter pub get
-flutter run
-⚠️ Ensure you have Flutter SDK and Node.js installed. MongoDB connection details must be configured in the .env file.
-
-📡 API References
-NASDAQ API – Nigerian stock news
-
-Yahoo Finance API – Global stock market news
-
-Finhub.io – Real-time market & financial data
-
-Financial Modeling Prep – Stock charts & financials
-
-🎨 UI/UX Design
-The UI/UX was prototyped using Figma with a strong focus on accessibility, gamification elements, and clarity for beginner-level users.
-
-🔗 View Design Mockups (Optional Link to Figma)
-
-🌐 Deployment
-Backend hosted on Render
-
-Database: MongoDB Atlas
-
-🏁 Contributing
-Want to contribute to this project?
-
-bash
-Copy
-Edit
-1. Fork the repository
-2. Create your branch: git checkout -b feature-name
-3. Commit your changes: git commit -m "Add feature"
-4. Push to the branch: git push origin feature-name
-5. Create a Pull Request
-
-
-💡 Acknowledgments
-Nigerian Stock Exchange – For the Hackathon and initiative on financial literacy.
-
-NASDAQ, Yahoo Finance, Finhub, FMP – For their APIs and data support.
+NASDAQ, Yahoo Finance, Finhub, FMP : For their APIs and data support.
 
 Flutter & Node.js community – For robust tooling and documentation.
 
-💌 Connect With Us
-If you're passionate about finance, gamification, or ed-tech, feel free to collaborate or reach out! 💼
 
+# License
+packages backend  liscened by ISC
 
-
-
-
-
-
-
-
-,
 
