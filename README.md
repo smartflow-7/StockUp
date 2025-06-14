@@ -1,10 +1,9 @@
-# 📊Gamified Stock Trading simulator 
-This project entails building a **Gamified Stock Trading Simulator**,that is demysifyed, interactive, built to boost **financial literacy** and **trading confidence**  designed especially for the Nigerian porpulace. Called the app **stockUp**
+# 📊Gamified Stock Trading Simulator App **StockUp**
+**Nigerian Stock Exchange Financial Literacy Hackathon**
 
-This app blends **real-world stock data**, engaging **game mechanics**, and curated **educational content** to simulate stock trading in a fun, risk-free environment tailored to beginners and aspiring investors in Nigeria.
+This app blends **real-world stock data**, engaging **game approach**, and curated **educational content on stock trading** to simulate stock trading in a fun, risk-free environment tailored to beginners and aspiring investors in Nigeria.Should be seen as an educational tool built to promote **financial literacy** through **interactive game-like environment with the use of real-time data sstocks ** .
 
-
-**Nigerian Stock Exchange Financial Literacy Hackathon**.
+This projectparticularly aim to empowers users to **learn stock trading** by doing, **simulate real-time trades**, and **compete with peers**, all in a **risk-free**, **gamified environment** that mirrors the dynamics of the Nigerian and global stock markets.
 
 # Table Of Content
 -Project discription
@@ -15,6 +14,7 @@ This app blends **real-world stock data**, engaging **game mechanics**, and cura
 - Acknowledgments
   
 # Installation and Usage
+ `Dart` with `Flutter` – for building responsive mobile-first UI  
 # Technologies
 **Tech Stack & Tools Used**
 
