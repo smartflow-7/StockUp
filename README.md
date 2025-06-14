@@ -63,17 +63,17 @@ flutter run
 
 ## 🎮 Features
 
-✅ **Onboarding System**  
-✅ **Gamified Ranking System**  
-✅ **Leaderboard**  
-✅ **User Stock Portfolio Management**  
-✅ **AI-Powered Stock Suggestions**  
-✅ **Integrated Stock Market News**  
-✅ **News Preference Filter**  
-✅ **Educational Resource Section** (Articles, Tutorials)  
-✅ **Quiz Module** to test financial knowledge  
-✅ **Live Stock Charts Display**  
-✅ **Real-Time Trading Data**
+✅   **Gamified Onboarding**: This is the guided onboarding journey that sets up users with a virtual budget, walks them through key stock concepts, and introduces game mechanics.
+ ✅ **AI-Based Stock Suggestions**  A smart engine that is based on user preference & simulated performance that recommends stock picks with reasons. 
+✅ **Real-Time Stock Data**  Integrated APIs that provides real-time price changes, news, and historical charts. 
+ 💹 **Virtual Trading Simulator**  Users simulate trades using a virtual budget,virtual currency like dummy money  buying/selling shares in Nigerian and foreign stocks. 
+✅ **Leaderboards & Rankings** : A live leaderboard ranks players based on profitability, learning milestones, and even quiz accuracy. 
+✅**Stock News Feed** : Having Filterable Nigerian and global market news personalized by user interest. 
+✅**Educational Resources**  :In-app library featuring beginner to intermediate stock market lessons. Topics include: Technical analysis, portfolio diversification, NSE structure, risk management, and more. 
+✅Push Notifications for stock news alerts and ranking updates
+✅ **Preference Filters** :Here Users can filter stock news based on sectors, markets (e.g., NSE, NASDAQ), or stock tickers. 
+✅**Live Charts**: Line, candlestick, and bar charts pulled dynamically from real APIs pulled From Financial Modeling Prep. 
+
 
 
 
@@ -91,11 +91,6 @@ Design elements include:
 
 
 
-
-
-
-
-
 ## 🧠Usage
 
 1. **Sign Up & Onboard**: Users complete onboarding and set theur trading goals.
@@ -104,6 +99,17 @@ Design elements include:
 4. **Earn & Rank**: Get ranked based on profitability, learning milestones, and activity.
 5. **Stay Updated**: Get real-time market news filtered to your preferences.
 6. **Progress Through Quizzes**: Validate your learning with quizzes and earn XP.
+
+#Future Enhancements
+- **Gamified Quizzes**  :Timed quizzes test user comprehension. Correct answers earn points and unlock new badges. 
+
+-Cryptocurrency simulation module
+
+-Real stock trading integration via authorized brokerage
+
+-Group challenges or tournaments
+
+-Account trading phases personalization based on age range
 
 
 
