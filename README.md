@@ -1,5 +1,4 @@
-﻿﻿# StockUp
-#Gamified Stock Trading simulator 
+# Gamified Stock Trading simulator 
 This project entails building a **Gamified Stock Trading Simulator**,that is demysifyed, interactive, built to boost **financial literacy** and **trading confidence**  designed especially for the Nigerian porpulace. Called the app **stockUp**
 
 This app blends **real-world stock data**, engaging **game mechanics**, and curated **educational content** to simulate stock trading in a fun, risk-free environment tailored to beginners and aspiring investors in Nigeria.
