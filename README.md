@@ -5,6 +5,15 @@ This app blends **real-world stock data**, engaging **game approach**, and curat
 
 This projectparticularly aim to empowers users to **learn stock trading** by doing, **simulate real-time trades**, and **compete with peers**, all in a **risk-free**, **gamified environment** that mirrors the dynamics of the Nigerian and global stock markets.
 
+
+#project Purpose
+Through these simulation and  AI-driven suggestions, aswell as educational content on Stock exchange, users can learn:
+
+- How the stock market works
+- How to analyze and trade stocks
+- How to build a sustainable portfolio
+- And most importantly, how to make informed financial decisions
+
 # Table Of Content
 -Project discription
 - Installation and Usage
@@ -14,11 +23,20 @@ This projectparticularly aim to empowers users to **learn stock trading** by doi
 - Acknowledgments
   
 # Installation and Usage
- `Dart` with `Flutter` – for building responsive mobile-first UI  
+
 # Technologies
 **Tech Stack & Tools Used**
 
- **Frontend** : 
+ **Frontend** :  `Dart` with `Flutter` – for building responsive mobile-first UI  
+  **Backend**   : | `Node.js` – RESTful API for authentication, trading logic, news feed, leaderboard   |
+| **Database**   :| `MongoDB Atlas` – for managing user data, portfolio states, quiz results            |
+| **API Testing**:| `Postman` – for testing endpoints during backend development                        |
+| **Deployment** :| `Render` – to deploy the backend service live                                       |
+| **Code Editor** :| `VS Code` – the main IDE for writing and debugging both backend and frontend code   |
+| **Mobile Testing** :| `Android Studio` – for simulating the Flutter app during dev                     |
+| **Version Control** :| `GitHub` – project tracking and collaboration                                    |
+| **Design**    :| `Figma` – UI/UX wireframes, high-fidelity prototypes                                |
+
 
 
 
