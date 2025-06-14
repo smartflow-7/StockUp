@@ -103,13 +103,11 @@ Design elements include:
 #Future Enhancements
 - **Gamified Quizzes**  :Timed quizzes test user comprehension. Correct answers earn points and unlock new badges. 
 
--Cryptocurrency simulation module
+- Real stock trading integration via authorized brokerage
 
--Real stock trading integration via authorized brokerage
+- Group challenges or tournaments
 
--Group challenges or tournaments
-
--Account trading phases personalization based on age range
+- Account trading phases personalization based on age range
 
 
 
