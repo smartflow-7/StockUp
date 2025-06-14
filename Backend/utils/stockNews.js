@@ -9,7 +9,7 @@ const connectNews = (category = "general") => {
 
       const finnhubClient = new finnhub.DefaultApi();
 
-      finnhubClient.marketNews(category, {}, (error, data, response) => {
+      finnhubClient.marketNews(category, {}, (error, data, ) => {
         if (error) {
           console.log("Finnhub error:", error);
           reject(error);
