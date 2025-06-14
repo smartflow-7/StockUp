@@ -47,36 +47,7 @@ Through these simulation and  AI-driven suggestions, aswell as educational conte
     -Financial Modeling Prep For Stock charts & financial graphs
 
 
-# Setup
-
-
-# Contributions
-
-#Acknowledgments
-
-# License
-
-''''bash
-# 📊 Gamified Stock Trading Simulator App 🇳🇬
-
-Welcome to our **Gamified Stock Trading Simulator**, an immersive, interactive app built to boost **financial literacy** and **trading confidence** — designed especially for the **Nigerian Stock Exchange Financial Literacy Hackathon**.
-
-This app blends **real-world stock data**, engaging **game mechanics**, and curated **educational content** to simulate stock trading in a fun, risk-free environment tailored to beginners and aspiring investors in Nigeria.
-
----
-
-## 🚀 Tech Stack & Tools Used
-
-| Category               | Tools / Frameworks                                |
-|------------------------|----------------------------------------------------|
-| **Frontend**           | Dart (Flutter Framework)                           |
-| **Backend**            | Node.js                                            |
-| **Database**           | MongoDB                                            |
-| **Design & Prototyping** | Figma (UI/UX & Wireframing)                     |
-| **API Integration**    | NASDAQ API (Nigerian stock news) <br> Yahoo Finance API (Foreign stock news) <br> Finhub.io (Real-time trading data) <br> Financial Modeling Prep API (Stock charts) |
-| **Dev Tools**          | Postman (API Testing) <br> VS Code (Code Editor) <br> Android Studio (Simulator) <br> GitHub (Version Control) <br> Render (Deployment) |
-
----
+# 🖥️Setup and Installation
 
 ## 🎮 Features
 
@@ -87,14 +58,13 @@ This app blends **real-world stock data**, engaging **game mechanics**, and cura
 ✅ **AI-Powered Stock Suggestions**  
 ✅ **Integrated Stock Market News**  
 ✅ **News Preference Filter**  
-✅ **Educational Resource Section** (Articles, Videos, Tutorials)  
+✅ **Educational Resource Section** (Articles, Tutorials)  
 ✅ **Quiz Module** to test financial knowledge  
 ✅ **Live Stock Charts Display**  
 ✅ **Real-Time Trading Data**
 
----
 
-## 🧠 How It Works
+## 🧠Usage
 
 1. **Sign Up & Onboard**: Users complete onboarding and set trading goals.
 2. **Explore & Learn**: Access educational content to build trading literacy.
@@ -103,7 +73,17 @@ This app blends **real-world stock data**, engaging **game mechanics**, and cura
 5. **Stay Updated**: Get real-time market news filtered to your preferences.
 6. **Progress Through Quizzes**: Validate your learning with quizzes and earn XP.
 
----
+
+
+
+# Contributions
+
+#Acknowledgments
+
+# License
+
+
+
 
 ## 🖥️ Setup & Installation
 
