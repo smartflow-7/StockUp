@@ -58,7 +58,7 @@ Frontend (Flutter)
 cd frontend
 flutter pub get
 flutter run
-⚠️ Ensure you have Flutter SDK and Node.js installed. MongoDB connection details must be configured in the .env file.
+- ⚠️ Ensure you have Flutter SDK and Node.js installed. MongoDB connection details must be configured in the .env file.
 
 
 ## 🎮 Features
@@ -113,9 +113,13 @@ Design elements include:
 
 
 # Contributions
-
-#Acknowledgments
-**Nigerian Stock Exchange Financial literacy Hackathon** For the Hackathon and initiative on financial literacy.
+- Korede: Developed the app's front end and ui/ux with Flutter frameworks and Dart programming languages.
+- Oreoluwa: Developed the App's backend involving it's functionality and features with the use of Noode.js runtime and javascript programming language.
+- Boluwatife:Carried out extensive Reseach on Stocks, stock market, stock exchange Trading, Basic feature that should be on the app as well as other rival apps.
+she also gave the workflow of the app.
+- Morenikeji: Made market analysis, reseafch on target audience, Documentations, Presentation and pitching, Preparations of the proposals, pitch-deck, Presentation slides.
+# Acknowledgments
+**Nigerian Stock Exchange Financial literacy Hackathon Cscon X GDG Quant finance ** For the Hackathon and initiative on financial literacy.
 
 NASDAQ, Yahoo Finance, Finhub, FMP : For their APIs and data support.
 
