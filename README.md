@@ -15,14 +15,14 @@ Through these simulation and  AI-driven suggestions, aswell as educational conte
 - And most importantly, how to make informed financial decisions
 
 # Table Of Content
--Project discription
+- Project discription
 - Installation and Usage
 - Technologies
 - features
 - Contributions
 - Acknowledgments
   
-# Installation and Usage
+
 
 # Technologies
 **Tech Stack & Tools Used**
@@ -63,16 +63,16 @@ flutter run
 
 ## 🎮 Features
 
-✅   **Gamified Onboarding**: This is the guided onboarding journey that sets up users with a virtual budget, walks them through key stock concepts, and introduces game mechanics.
- ✅ **AI-Based Stock Suggestions**  A smart engine that is based on user preference & simulated performance that recommends stock picks with reasons. 
-✅ **Real-Time Stock Data**  Integrated APIs that provides real-time price changes, news, and historical charts. 
- 💹 **Virtual Trading Simulator**  Users simulate trades using a virtual budget,virtual currency like dummy money  buying/selling shares in Nigerian and foreign stocks. 
-✅ **Leaderboards & Rankings** : A live leaderboard ranks players based on profitability, learning milestones, and even quiz accuracy. 
-✅**Stock News Feed** : Having Filterable Nigerian and global market news personalized by user interest. 
-✅**Educational Resources**  :In-app library featuring beginner to intermediate stock market lessons. Topics include: Technical analysis, portfolio diversification, NSE structure, risk management, and more. 
-✅Push Notifications for stock news alerts and ranking updates
-✅ **Preference Filters** :Here Users can filter stock news based on sectors, markets (e.g., NSE, NASDAQ), or stock tickers. 
-✅**Live Charts**: Line, candlestick, and bar charts pulled dynamically from real APIs pulled From Financial Modeling Prep. 
+- ✅   **Gamified Onboarding**: This is the guided onboarding journey that sets up users with a virtual budget, walks them through key stock concepts, and introduces game mechanics.
+- ✅ **AI-Based Stock Suggestions**  A smart engine that is based on user preference & simulated performance that recommends stock picks with reasons. 
+- ✅ **Real-Time Stock Data**  Integrated APIs that provides real-time price changes, news, and historical charts. 
+- 💹 **Virtual Trading Simulator**  Users simulate trades using a virtual budget,virtual currency like dummy money  buying/selling shares in Nigerian and foreign stocks.
+- ✅ **Leaderboards & Rankings** : A live leaderboard ranks players based on profitability, learning milestones, and even quiz accuracy. 
+- ✅**Stock News Feed** : Having Filterable Nigerian and global market news personalized by user interest. 
+- ✅**Educational Resources**  :In-app library featuring beginner to intermediate stock market lessons. Topics include: Technical analysis, portfolio diversification, NSE structure, risk management, and more. 
+- ✅ **Push Notifications** for stock news alerts and ranking updates
+- ✅ **Preference Filters** :Here Users can filter stock news based on sectors, markets (e.g., NSE, NASDAQ), or stock tickers. 
+- ✅**Live Charts**: Line, candlestick, and bar charts pulled dynamically from real APIs pulled From Financial Modeling Prep. 
 
 
 
@@ -100,7 +100,7 @@ Design elements include:
 5. **Stay Updated**: Get real-time market news filtered to your preferences.
 6. **Progress Through Quizzes**: Validate your learning with quizzes and earn XP.
 
-#Future Enhancements
+# Future Enhancements
 - **Gamified Quizzes**  :Timed quizzes test user comprehension. Correct answers earn points and unlock new badges. 
 
 - Real stock trading integration via authorized brokerage
@@ -115,7 +115,7 @@ Design elements include:
 # Contributions
 
 #Acknowledgments
-**Nigerian Stock Exchange** For the Hackathon and initiative on financial literacy.
+**Nigerian Stock Exchange Financial literacy Hackathon** For the Hackathon and initiative on financial literacy.
 
 NASDAQ, Yahoo Finance, Finhub, FMP : For their APIs and data support.
 
