@@ -3,10 +3,10 @@
 
 This app blends **real-world stock data**, engaging **game approach**, and curated **educational content on stock trading** to simulate stock trading in a fun, risk-free environment tailored to beginners and aspiring investors in Nigeria.Should be seen as an educational tool built to promote **financial literacy** through **interactive game-like environment with the use of real-time data sstocks ** .
 
-This projectparticularly aim to empowers users to **learn stock trading** by doing, **simulate real-time trades**, and **compete with peers**, all in a **risk-free**, **gamified environment** that mirrors the dynamics of the Nigerian and global stock markets.
+This project particularly aim to empowers users to **learn stock trading** by doing, **simulate real-time trades**, and **compete with peers**, all in a **risk-free**, **gamified environment** that mirrors the dynamics of the Nigerian and global stock markets.
 
 
-#project Purpose
+# project Purpose
 Through these simulation and  AI-driven suggestions, aswell as educational content on Stock exchange, users can learn:
 
 - How the stock market works
@@ -16,8 +16,8 @@ Through these simulation and  AI-driven suggestions, aswell as educational conte
 
 # Table Of Content
 - Project discription
-- Installation and Usage
 - Technologies
+- Setup and Installation
 - features
 - Contributions
 - Acknowledgments
