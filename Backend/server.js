@@ -8,6 +8,10 @@ import stockRouter from './routes/stockRoutes.js'; // Stock search routes
 import newsRouter from './routes/newsRoutes.js';
 import boardRoutes from './routes/leaderboardRoutes.js';
 import suggestionRoutes from './routes/aiSuggestionRoutes.js'; // AI suggestion routes
+import ModuleRoutes from './routes/moduleRoutes.js'; // Module routes
+import questionRoutes  from './routes/questionRoutes.js'; // Question routes
+import quizRoutes from './routes/quizeRoutes.js'; // Quiz routes
+import optionRoutes from './routes/optionRoutes.js'; // Option routes
 
 // App initialization
 const app = express();
@@ -26,6 +30,10 @@ app.use("/stockUp/stocks", stockRouter);
 app.use("/stockUp/news", newsRouter)
 app.use("/stockUp/leaderboard",boardRoutes)
 app.use("/stockUp/", suggestionRoutes)
+app.use("/stockUp/modules", ModuleRoutes); // Module routes
+app.use("/stockUp/questions", questionRoutes); // Question routes
+app.use("/stockUp/quizzes", quizRoutes); // Quiz routes
+app.use("/stockUp/options", optionRoutes); // Option routes
 
 app.get('/', (req, res) => {
     res.send('StockUp is live');
