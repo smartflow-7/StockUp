@@ -439,39 +439,54 @@ h1 {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
   }
 
   .logo-img-text {
     flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
     width: 100%;
   }
 
-  .nav-links {
-    flex-wrap: wrap;
-    gap: 12px;
+  .sup-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .logo-text {
+    font-size: 1.3rem;
   }
 
   .get-started-btn {
     align-self: stretch;
     width: 100%;
     text-align: center;
+    padding: 10px;
+    font-size: 0.9rem;
   }
 
   h1 {
-    font-size: 1.8rem;
-    line-height: 1.4;
+    font-size: 1.7rem;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .description {
+    font-size: 0.92rem;
+    margin-bottom: 20px;
   }
 
   .btn {
     width: 100%;
     text-align: center;
     padding: 12px;
+    font-size: 0.9rem;
   }
 
   .cta-buttons {
@@ -481,8 +496,8 @@ h1 {
 
   .users-box {
     flex-direction: column;
-    gap: 12px;
-    padding: 16px;
+    gap: 10px;
+    padding: 14px;
   }
 
   .avatars {
@@ -500,7 +515,7 @@ h1 {
   .card-top-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
   }
 
   .price-section {
@@ -512,12 +527,84 @@ h1 {
   .timeframe-buttons {
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 8px;
+    gap: 6px;
   }
 
   .overview-table {
     grid-template-columns: 1fr;
     gap: 10px 0;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .landing-container {
+    padding: 20px 10px;
+  }
+
+  .sup-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .logo-text {
+    font-size: 1.2rem;
+  }
+
+  h1 {
+    font-size: 1.55rem;
+    margin-bottom: 14px;
+  }
+
+  .description {
+    font-size: 0.88rem;
+    margin-bottom: 18px;
+  }
+
+  .btn,
+  .get-started-btn {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .users-box {
+    padding: 12px;
+  }
+
+  .avatars img {
+    width: 30px;
+    height: 30px;
+    margin-left: -8px;
+  }
+
+  .extra {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+  }
+
+  .mobile-card {
+    padding: 12px;
+  }
+
+  .dngte {
+    font-size: 0.95rem;
+  }
+
+  .price-left h3 {
+    font-size: 1.4rem;
+  }
+
+  .chart-section {
+    gap: 6px;
+  }
+
+  .timeframe-buttons button {
+    font-size: 0.72rem;
+    padding: 4px 8px;
+  }
+
+  .overview-table .label,
+  .overview-table .value {
+    font-size: 0.75rem;
   }
 }
 

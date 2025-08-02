@@ -3,16 +3,24 @@ import './CSS/Landing.css';
 import ec20 from '../Components/Assets/ec20.png';
 import ec27 from '../Components/Assets/ec27.png';
 import ec28 from '../Components/Assets/ec28.png';
-import ec29 from '../Components/Assets/ec29.png';
 import ec32 from '../Components/Assets/ec32.png';
 import sup from '../Components/Assets/sup.png';
 import chart from '../Components/Assets/chart.PNG';
 import { FiArrowLeft, FiInfo, FiImage, FiSliders } from 'react-icons/fi';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import { FaCircle } from 'react-icons/fa';
+import Section2 from './Section2';
+import Section3 from './Section3';
+import Section4 from './Section4';
+import Footer from './Footer';
+
+
+
+
 
 const Landing = () => {
   return (
+    <>
     <div className="landing-container">
       {/* LEFT SIDE */}
       <div className="landing-left">
@@ -64,7 +72,7 @@ const Landing = () => {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="landing-right">
+    <div className="landing-right">
         <div className="top-right-container">
           <button className="get-started-btn">Get started</button>
         </div>
@@ -149,6 +157,13 @@ const Landing = () => {
         </div>
       </div>
     </div>
+
+    <Section2 />
+<Section3 />
+<Section4 />
+<Footer />
+
+</>
   );
 };
 
