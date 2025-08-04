@@ -1,14 +1,14 @@
-const express = require('express');
+import express from "express";
 const ModuleRoutes = express.Router();
-const {
+import {
     createModule,
     getModules,
     getModuleById,
     updateModule,
     deleteModule
-} = require('../controllers/moduleController');
+} from '../controllers/moduleController.js';
 
 ModuleRoutes.route('/').post(createModule).get(getModules);
 ModuleRoutes.route('/:id').get(getModuleById).put(updateModule).delete(deleteModule);
 
-module.exports = ModuleRoutes;
+export default ModuleRoutes;

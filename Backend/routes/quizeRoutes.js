@@ -1,14 +1,15 @@
-const express = require('express');
+import express from "express";
 const quizRoutes = express.Router();
-const {
+import {
     createQuiz,
     getQuizzesByModule,
     getQuizById,
     updateQuiz,
     deleteQuiz
-} = require('../controllers/quizController');
+} from '../controllers/quizController.js';
 
-quizRoutes.route('/').post(createQuiz).get(getQuizzesByModule);
+quizRoutes.route('/').post(createQuiz);
+quizRoutes.route('/by-module/:moduleId').get(getQuizzesByModule);
 quizRoutes.route('/:id').get(getQuizById).put(updateQuiz).delete(deleteQuiz);
 
-module.exports = quizRoutes;
+export default quizRoutes;

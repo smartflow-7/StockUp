@@ -1,4 +1,4 @@
-const { Question, Option } = require('../models/moduleModel');
+import { Question, Option } from '../models/moduleModel.js';
 
 
 // Create a new question
@@ -91,7 +91,7 @@ const deleteQuestion = async (req, res) => {
     }
 }
 
-module.exports = {
+export {
     createQuestion,
     getQuestionsByQuiz,
     getQuestionById,

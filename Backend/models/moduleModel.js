@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const moduleSchema = mongoose.Schema( {
     title: { type: String, required: true },
     content: { type: String, required: true },
+    image_url: { type: String, required: false },
     author: { type: String, required: true },
 }, { timestamps: true });
 
@@ -26,13 +27,13 @@ const Question = mongoose.models.Question || mongoose.model("Question", question
 
 const optionSchema = mongoose.Schema({
     questionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Question', required: true },
-    optionText: { type: String, required: true },
+    optionText: { type: String, required: false },
     label: { type: String, enum: ["A", "B", "C", "D"], required: true },
 }, { timestamps: true });
 
 const Option = mongoose.models.Option || mongoose.model("Option", optionSchema);
 
-export default {
+export {
     Module,
     Quiz,
     Question,
