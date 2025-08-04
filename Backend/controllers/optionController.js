@@ -1,4 +1,4 @@
-const { Option, Question } = require('../models/moduleModel');
+import { Option, Question } from '../models/moduleModel.js';
 
 
 // Create a new option
@@ -22,7 +22,7 @@ const createOption = async (req, res) => {
 const getOptionsByQuestion = async (req, res) => {
     try {
         const { questionId } = req.params;
-        const options = await Option.find({ questionId }).sort({ createdAt: -1 }).populate('questionId', 'questionText');
+        const options = await Option.find({ questionId }).sort({ createdAt: -1 });
 
         if (options.length === 0) {
             return res.status(404).json({ success: false, message: "No options found for this question" });
@@ -123,7 +123,7 @@ const checkQuestionAnswer = async (req, res) => {
     }
 }
 
-module.exports = {
+export {
     createOption,
     getOptionsByQuestion,
     getOptionById,

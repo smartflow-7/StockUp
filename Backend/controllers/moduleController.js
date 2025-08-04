@@ -1,13 +1,13 @@
-const { Module } = require('../models/moduleModel');
+import { Module } from '../models/moduleModel.js';
 
 
 // Create a new module
 const createModule = async (req, res) => {
     try {
-        const { title, content, author } = req.body;
+        const { title, content, image_url, author } = req.body;
 
         if (!title || !content || !author) {
-            return res.status(400).json({ message: "All fields are required" });
+            return res.status(400).json({ message: "fields are required" });
         }
         const newModule = await Module.create({ title, content, author });
         res.status(201).json({ success: true, module: newModule });
@@ -18,7 +18,7 @@ const createModule = async (req, res) => {
 }
 
 // Get all modules
-const getModules = async (res, req) => {
+const getModules = async (req, res) => {
     try{
         const modules = await Module.find().sort({ createdAt: -1 });
         res.status(200).json({ success: true, modules });
@@ -86,7 +86,7 @@ const deleteModule = async (req, res) => {
     }
 }
 
-module.exports = {
+export {
     createModule,
     getModules,
     getModuleById,

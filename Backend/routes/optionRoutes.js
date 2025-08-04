@@ -1,16 +1,17 @@
-const express = require('express');
+import express from "express";
 const optionRoutes = express.Router();
-const {
+import {
     createOption,
     getOptionsByQuestion,
     getOptionById,
     updateOption,
     deleteOption,
     checkQuestionAnswer
-} = require('../controllers/optionController');
+} from '../controllers/optionController.js';
 
-optionRoutes.route('/').post(createOption).get(getOptionsByQuestion);
+optionRoutes.route('/').post(createOption);
+optionRoutes.route('/by-question/:questionId').get(getOptionsByQuestion);
 optionRoutes.route('/:id').get(getOptionById).put(updateOption).delete(deleteOption);
 optionRoutes.route('/check-answer').post(checkQuestionAnswer); // Route to check question answer
 
-module.exports = optionRoutes;
+export default optionRoutes;

@@ -1,14 +1,15 @@
-const express = require('express');
+import express from "express";
 const questionRoutes = express.Router();
-const {
+import {
     createQuestion,
     getQuestionsByQuiz,
     getQuestionById,
     updateQuestion,
     deleteQuestion
-} = require('../controllers/questionController');
+} from '../controllers/questionController.js';
 
-questionRoutes.route('/').post(createQuestion).get(getQuestionsByQuiz);
+questionRoutes.route('/').post(createQuestion);
+questionRoutes.route('/by-quiz/:quizId').get(getQuestionsByQuiz);
 questionRoutes.route('/:id').get(getQuestionById).put(updateQuestion).delete(deleteQuestion);
 
-module.exports = questionRoutes;
+export default questionRoutes;

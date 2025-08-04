@@ -1,4 +1,4 @@
-const { Quiz } = require('../models/moduleModel');
+import { Quiz } from '../models/moduleModel.js';
 
 
 // Create a new quiz
@@ -89,7 +89,7 @@ const deleteQuiz = async (req, res) => {
 }
 
 
-module.exports = {
+export {
     createQuiz,
     getQuizzesByModule,
     getQuizById,
